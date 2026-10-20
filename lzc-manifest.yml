@@ -22,11 +22,11 @@ application:
         - /*
       do:
         - src: file:///lzcapp/pkg/content/lazycat-injects/lzc-file-chooser-inject.js
-
 services:
   tangentry:
     # muzileee/tangentry:0.0.2
-    image: muzileee/tangentry:0.0.2
+    # upstream: muzileee/tangentry:0.0.2
+    image: registry.lazycat.cloud/czyt/muzileee/tangentry:a718971643cba74d
     environment:
       - TZ=Asia/Shanghai
       - TANGENTRY_DATA=/data
