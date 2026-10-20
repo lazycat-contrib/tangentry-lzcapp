@@ -1,0 +1,22 @@
+package: community.lazycat.app.tangentry
+version: 0.0.2
+name: Tangentry
+description: A local-first reader and notebook that aggregates, reads and keeps notes across platforms
+min_os_version: 1.5.0
+homepage: https://github.com/mu-zi-lee/Tangentry
+author: mu-zi-lee
+license: MIT
+locales:
+  zh:
+    name: Tangentry 探知
+    description: 沿着好奇心继续发现 —— 本地优先的多平台内容聚合、阅读与笔记工具
+  zh_CN:
+    name: Tangentry 探知
+    description: 沿着好奇心继续发现 —— 本地优先的多平台内容聚合、阅读与笔记工具
+  en:
+    name: Tangentry
+    description: A local-first reader and notebook that aggregates, reads and keeps notes across platforms
+unsupported_platforms:
+  - ios
+  - android
+  - tvos

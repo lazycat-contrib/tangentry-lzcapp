@@ -1,0 +1,69 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/tangentry.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: tangentry
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: tangentry
+    target: service
+    service: tangentry
+    source: muzileee/tangentry
+    channel: stable
+    sort: semver
+    # Upstream publishes 0.0.x releases only; exclude the floating latest tag.
+    tag_regex: ^[0-9]+[.][0-9]+[.][0-9]+$
+    delivery:
+      # The official store only accepts images served from the LazyCat registry,
+      # so let the Action copy the image and rewrite the manifest.
+      mode: lazycat
+
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    create_if_missing: true
+    changelog_locales: [zh, en]
+    retry:
+      enabled: false
+      max_attempts: 3
+      initial_delay: 2s
+      max_delay: 30s
+    application:
+      language: zh
+      name: Tangentry
+      brief: 沿着好奇心继续发现 —— 本地优先的多平台内容聚合、阅读与笔记工具
+      description: |
+        Tangentry 是一个本地优先的内容聚合与阅读工具：把 YouTube、B站、播客、小红书等
+        平台的内容收进一处，边看边记，把读到的内容沉淀为可检索的笔记。
+        支持字幕提取、语音转写与下载归档，数据全部保存在你自己的懒猫微服里。
+        首次登录密码在安装时自动生成，无需手动输入。
+      keywords: 阅读,笔记,内容聚合,播客,YouTube,B站,字幕,转写
+      source: https://github.com/mu-zi-lee/Tangentry
+      source_author: mu-zi-lee
+      support_pc: true
+      screenshot_pc_files:
+        - .github/screenshots/pc-1-discovery.jpg
+        - .github/screenshots/pc-2-reader.jpg
+        - .github/screenshots/pc-3-notes.jpg
+        - .github/screenshots/pc-4-podcast.jpg
+        - .github/screenshots/pc-5-settings.jpg
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Tangentry 探知
+    summary: 自动跟上游 Docker Hub 版本发布的本地优先阅读与笔记工具

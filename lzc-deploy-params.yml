@@ -1,0 +1,13 @@
+params:
+  - id: login_password
+    type: secret
+    name: "Login Password"
+    description: "Password for the Tangentry server login"
+    default_value: "$random(len=20)"
+    optional: false
+
+locales:
+  zh:
+    login_password:
+      name: "登录密码"
+      description: "Tangentry 服务器登录密码，部署时自动生成"

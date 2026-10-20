@@ -1,0 +1,35 @@
+application:
+  subdomain: tangentry
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://tangentry:7380/
+  injects:
+    # Server mode uses one shared password; fill it for the user so the app
+    # store password rule is satisfied.
+    - id: login-autofill
+      when:
+        - /login
+      do:
+        - src: builtin://simple-inject-password
+          params:
+            password: "{{ .U.login_password }}"
+    # The store requires upload/download to go through the LazyCat cloud drive.
+    - id: open-save-chooser
+      on: browser
+      when:
+        - /*
+      do:
+        - src: file:///lzcapp/pkg/content/lazycat-injects/lzc-file-chooser-inject.js
+
+services:
+  tangentry:
+    # muzileee/tangentry:0.0.2
+    image: muzileee/tangentry:0.0.2
+    environment:
+      - TZ=Asia/Shanghai
+      - TANGENTRY_DATA=/data
+      - TANGENTRY_PASSWORD={{ .U.login_password }}
+    binds:
+      - /lzcapp/var/data:/data
