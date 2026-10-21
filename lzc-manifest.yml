@@ -26,7 +26,7 @@ services:
   tangentry:
     # muzileee/tangentry:0.0.2
     # upstream: muzileee/tangentry:0.0.3
-    image: registry.lazycat.cloud/czyt/muzileee/tangentry:200b066ba24fe773
+    image: docker.1ms.run/muzileee/tangentry:0.0.3
     user: root
     environment:
       - TZ=Asia/Shanghai
