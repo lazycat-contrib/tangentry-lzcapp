@@ -1,5 +1,5 @@
 package: community.lazycat.app.tangentry
-version: 0.0.2
+version: 0.0.3
 name: Tangentry
 description: A local-first reader and notebook that aggregates, reads and keeps notes across platforms
 min_os_version: 1.5.0

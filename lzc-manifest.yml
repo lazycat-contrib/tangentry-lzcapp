@@ -25,8 +25,8 @@ application:
 services:
   tangentry:
     # muzileee/tangentry:0.0.2
-    # upstream: muzileee/tangentry:0.0.2
-    image: registry.lazycat.cloud/czyt/muzileee/tangentry:a718971643cba74d
+    # upstream: muzileee/tangentry:0.0.3
+    image: registry.lazycat.cloud/czyt/muzileee/tangentry:200b066ba24fe773
     user: root
     environment:
       - TZ=Asia/Shanghai
